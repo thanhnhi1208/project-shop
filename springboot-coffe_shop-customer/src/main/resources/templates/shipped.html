@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipped</title>
+    <link rel="stylesheet" href="CSS_COFFEE/shipCoffee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" th:href="@{/CSS_COFFEE/menu.css}">
+</head>
+<body>
+  <header class="home-header">
+  <nav class="navbar">
+	         <a class="logo-name" th:href="@{/index}">Nông Sản Việt</a>
+	        <ul class="menu-links">         	
+	         <li>
+				 <input type="text" class="input-find-menu" placeholder="Tìm kiếm" id="input-find-menu">
+			 </li>
+	          <li><a th:href="@{/index}">Trang Chủ</a></li>
+	          <li><a th:href="@{/menu}">Sản Phẩm</a></li>
+	          
+	          <li sec:authorize="isAuthenticated()" th:if="${shoppingCart != null}">
+				  <a   th:href="@{/shoppingCart}">
+				  	  <div class="div-totalItem">
+						  <i class="fa-solid fa-cart-plus" style="color: #ff0000;"></i>
+						  <span id="totalItem" th:text="${shoppingCart.totalItem}"></span>
+					  </div>
+			  	  </a>
+			  </li>
+			  <li>
+				  <div class="dropdown"  >
+				  	  <img sec:authorize="isAuthenticated() == false" th:src="@{/img/avt-macdinh.jpg}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
+				  	  <img sec:authorize="isAuthenticated()" th:src="'data:image/jpeg;base64,' + ${customer.image}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
+					  <div class="dropdown-content">
+						<a th:href="@{/shipCoffee}" sec:authorize="isAuthenticated()">Đơn Hàng</a>
+						<a th:href="@{/shipped}" sec:authorize="isAuthenticated()">Đơn đã giao</a>
+					    <a th:href="@{/profile}" sec:authorize="isAuthenticated()">Tài Khoản</a>
+					    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Đăng Xuất</a>
+					    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Đăng nhập</a>		
+					    				    
+					  </div>
+			  	  </div>
+			  </li>
+	
+	        </ul>
+	        
+	      </nav>
+</head>
+
+      <div class="container">
+        <table id="table-ship">
+            <thead>
+              <tr>
+				<th>Mã Hàng</th>
+                <th>Hình Ảnh</th>
+                <th>Tên Món</th>               
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Trạng Thái</th>
+                <th>Thanh Toán</th>
+                <th>Chi Tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <th:block th:each="order, iterStatIndex:${orderList}">
+				<tr th:each="cartItem, status :${cartItemList}" th:if="${cartItem.order.id == order.id}">
+					<td th:text="${cartItem.order.id}" style="font-weight: bold; color: rgb(247, 136, 0);"></td>
+	                <td>
+						<img class="traNhietDoi" th:src="'data:image/jpeg;base64,' + ${cartItem.product.image}">
+	                </td>
+	                <td th:text="${cartItem.product.name}"></td>
+	                <td th:text="${#numbers.formatDecimal(cartItem.costPrice, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></td>
+	                <td th:text="${cartItem.quantity}"></td>
+	                <td>Thành Công</td>
+	                <td th:text="${order.paymentMethod}">Chuyển Khoản</td>
+	                <td id="detailInfo" th:if="${cartItem.order.id == order.id}">
+						<div class="dropdown" sec:authorize="isAuthenticated()" >
+					  	  <span style="color: red;">Chi tiết</span>
+						  <div class="dropdown-content">
+								<a th:text="'Tổng tiền: ' + ${#numbers.formatDecimal(order.totalPrice, 0, 'POINT', 0, 'POINT')} + 'VNĐ'" ></a>
+							    <a th:text="'Địa chỉ giao: ' + ${order.address}" ></a>
+							    <a th:text="'Tên người nhận: ' + ${order.fullName}"></a>
+							   	<a th:text="'SĐT người nhận: ' + ${order.phoneNumber}"></a>
+						  </div>
+		  	  			</div>
+					</td>
+				</tr>
+              </th:block >
+             
+            </tbody>
+        </table>
+
+      </div>
+
+                 <!--Footer-->
+    <div class="contact" id="contact">
+        <div class="contact-box">
+            <div class="contact-image">
+                <img src="Hinh_Coffee/nen.jpg">
+            </div>
+        </div>
+        <div class="contact-box">
+            <div class="contact-body">
+                <form>
+                    <h2>Chi Nhánh Của Chúng Tôi</h2>
+                    <div class="form-content">
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>130 Đồng Khởi Phường 11 Q.1 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>489 Âu Cơ Phường 11 Q.Tân Phú TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>49 Hồng Bàng Phường 2 Q.10 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>78 CMT8 Phường 7 Q.3 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i> 391 Nguyễn Thị Thập P.Tân Thuận Tây Q.7 TP.HCM</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+            
+    <div class="footer">
+        <div class="footer-box">
+            <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+           
+            <div class="brand">
+                <h2>Nông Sản Việt</h2>
+            </div>
+        </div>
+    </div>
+    
+    <script th:src="@{js/momo.js}"></script>
+    <script th:src="@{js/shipCoffee.js}"></script>
+</body>
+</html>

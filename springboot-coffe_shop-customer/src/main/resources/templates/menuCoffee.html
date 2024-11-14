@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/CSS_COFFEE/menu.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Menu</title>
+</head>
+
+<body>
+
+<header class="home-header">       
+		<nav class="navbar">
+	         <a class="logo-name" th:href="@{/index}">Nông Sản Việt</a>
+	        <ul class="menu-links">         	
+	         <li>
+				 <input type="text" class="input-find-menu" placeholder="Tìm kiếm" id="input-find-menu">
+			 </li>
+	          <li><a th:href="@{/index}">Trang Chủ</a></li>
+	          <li><a th:href="@{/menu}">Sản Phẩm</a></li>
+	          
+	          <li sec:authorize="isAuthenticated()" th:if="${shoppingCart != null}">
+				  <a   th:href="@{/shoppingCart}">
+				  	  <div class="div-totalItem">
+						  <i class="fa-solid fa-cart-plus" style="color: #ff0000;"></i>
+						  <span id="totalItem" th:text="${shoppingCart.totalItem}"></span>
+					  </div>
+			  	  </a>
+			  </li>
+			  <li>
+				  <div class="dropdown"  >
+				  	  <img sec:authorize="isAuthenticated() == false" th:src="@{/img/avt-macdinh.jpg}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
+				  	  <img sec:authorize="isAuthenticated()" th:src="'data:image/jpeg;base64,' + ${customer.image}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 20px;">
+					  <div class="dropdown-content">
+						<a th:href="@{/shipCoffee}" sec:authorize="isAuthenticated()">Đơn Hàng</a>
+						<a th:href="@{/shipped}" sec:authorize="isAuthenticated()">Đơn đã giao</a>
+					    <a th:href="@{/profile}" sec:authorize="isAuthenticated()">Tài Khoản</a>
+					    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Đăng Xuất</a>
+					    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Đăng nhập</a>		
+					    				    
+					  </div>
+			  	  </div>
+			  </li>
+	
+	        </ul>
+	        
+	      </nav>
+	</header>	
+<!--Sản Phẩm-->
+
+    <div  class="shop" id="shop">
+		<th:block th:each="category:${categoryList}">
+			<div class="shop-header">
+	            
+	            <h1 th:text="${category.name}"></h1>
+	        </div>
+	        <div class="shop-box">
+	            <div th:each="productItem:${productList}" th:if="${productItem.category.name == category.name}" class="item-1">
+	                <div class="card">
+	                    <div class="card-image">
+	                        <a th:href="@{/detailCoffee(id = ${productItem.id})}">
+								<img th:src="'data:image/jpeg;base64,' + ${productItem.image}">
+							</a>
+	                    </div>
+	                    <div class="card-body">
+	                        <i sec:authorize="isAuthenticated()" class="fa-solid fa-heart" ></i>
+	                        <label th:if="${productItem.sale_price != 0}" style="text-decoration: line-through; font-size: 20px; color: red;" class="cash" th:text="${#numbers.formatDecimal(productItem.price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></label>
+	                        <label th:if="${productItem.sale_price != 0}" class="cash" th:text="${#numbers.formatDecimal(productItem.sale_price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'" style="font-size: 21px;"></label>
+	                        <label th:if="${productItem.sale_price == 0}"  class="cash" th:text="${#numbers.formatDecimal(productItem.price, 0, 'POINT', 0, 'POINT')} + 'VNĐ'"></label>
+	                        <h2 th:text="${productItem.name}"></h2>
+	                        
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </th:block>
+	</div>
+            
+            
+      <!-- ChatBot -->
+
+        <div class="container-chat-bot"  sec:authorize="isAuthenticated()" id="container-chat-bot">
+                <div class="content-chat-bot" id="example-chat">
+	                  <div class="detail-content">
+	                    <img class="content-img"  src="img/chatbot.jpg" alt="">
+	                  </div>
+	            
+	                  <div class="chatbot">
+	                    ChatBot
+	                    <div class="detail-chatbot">Xin chào nơi đây cung cấp những thông tin về các loại sản phẩm cửa hàng hiện có. Bạn muốn hỏi gì?</div>
+	                  </div>
+                </div>
+                
+                <div id="example-chat-customer" style="display: none;" class="content-customer">
+				    <div class="content-you">
+					    <div class="you">
+					      You
+					      <div class="detail-you">ok, cảm ơn nhiều</div>
+					    </div>
+				
+			    	<div class="detail-content">
+				     	 <img class="content-img-you"  th:src="'data:image/jpeg;base64,' + ${customer.image}">
+				    </div>
+				  </div>
+				</div>
+            
+
+              <div class="container-send" id="container-send">     
+	                <div>
+	                  <img class="container-send-you-img"  th:src="'data:image/jpeg;base64,' + ${customer.image}"  >
+	                </div> 
+	        
+	                <div>
+	                	<input class="send-input" type="text" placeholder="Send Messengers" id="message-customer">
+	                </div> 
+	        
+	                <div class="div-send">
+	                  	<i class="fa-solid fa-paper-plane" style="color: orange; font-size: 25px;" id="icon-send"></i>
+	                
+	                </div>
+        
+          	</div>   
+    	</div>
+            
+            
+                <div class="circle"  sec:authorize="isAuthenticated()">
+                 	<img class="circle-img" src="img/messenger.png" >
+                 
+                </div>
+                
+               
+
+              <!--Footer-->
+    <div class="contact" id="contact">
+        <div class="contact-box">
+            <div class="contact-image">
+                <img src="Hinh_Coffee/nen.jpg">
+            </div>
+        </div>
+        <div class="contact-box">
+            <div class="contact-body">
+                <form>
+                    <h2>Chi Nhánh Của Chúng Tôi</h2>
+                    <div class="form-content">
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>130 Đồng Khởi Phường 11 Q.1 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>489 Âu Cơ Phường 11 Q.Tân Phú TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>49 Hồng Bàng Phường 2 Q.10 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i>78 CMT8 Phường 7 Q.3 TP.HCM</div>
+                        <div><i class="fa-solid fa-location-dot" style="color: #6ddf30;"></i> 391 Nguyễn Thị Thập P.Tân Thuận Tây Q.7 TP.HCM</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+            
+    <div class="footer">
+        <div class="footer-box">
+            <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+           
+            <div class="brand">
+                <h2>Nông Sản Việt</h2>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+	<script th:src="@{/js/favorite.js}"></script>
+	<script th:src="@{/js/chatbot.js}"></script>
+	<script th:src="@{/js/find-menu.js}"></script>
+	
+	 <script>
+		 		 let circle = document.querySelector('.circle');
+                  if(circle != null){
+					  circle.addEventListener('click', function() {
+	                    let element = document.querySelector('.container-chat-bot');
+	                    let style = window.getComputedStyle(element);
+	                    if(style.top == '90px'){
+	                      element.style.top = '1000px';
+	                    }else{
+	                      element.style.top = '90px';
+	                    }
+	                });
+				  }
+                
+        </script>
+
+</html>

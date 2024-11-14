@@ -1,0 +1,684 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.navbar .logo-name {
+  color: #f3af39;
+  font-weight: 600;
+  font-size: 2.1rem;
+  text-decoration: none;
+}
+
+
+.navbar .menu-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.navbar a {
+  color: #f3af39;
+  text-decoration: none;
+  transition: 0.2s ease;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+  
+  .div-totalItem{
+	  position: relative;
+  }
+  
+  #totalItem {
+	  	position: absolute;
+	  	top: -10px;
+	  	right: -13px;
+	  	color: red;
+  }
+  
+  
+  
+  .navbar .menu-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    align-items: center;
+  }
+  
+  .navbar a {
+    color: #f3af39;
+    text-decoration: none;
+    transition: 0.2s ease;
+  }
+
+/* san phẩm */
+
+
+.shop {
+    width: 100%;
+}
+
+.shop .shop-header {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(245, 187, 90);
+    margin-top: 25px;
+}
+
+
+
+.shop-header h1 {
+    color: rgb(21, 95, 21);
+}
+
+
+.shop-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;    
+    padding: 50px 0;
+    flex-wrap: wrap;
+}
+
+.shop-box .card {
+    width: 280px;
+    margin: 20px;
+    height: 330px;
+}
+
+.shop-box .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This property maintains the aspect ratio of the image */
+    position: relative;
+}
+
+
+
+.shop-box .card-image img:hover {
+    transform: scale(1.1);
+    transition: transform .4s ease-in-out;
+}
+
+.shop-box .card-body {
+    padding: 20px;
+    border: none;
+}
+
+.shop-box .card-body h2 {
+    padding: 10px 0;
+    color: orange;
+}
+
+
+
+.shop-box .card-body .cash {
+    font-size: 22px;
+    display: flex;
+    justify-content: end;
+}
+
+
+/* Contact */
+
+.contact {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border-top: 2px solid #333333;
+}
+
+.contact .contact-box {
+    flex: 1;
+}
+
+.contact .contact-box .contact-image,
+.contact .contact-box .contact-body {
+    height: 100%;
+}
+
+.contact img {
+    width: 760px;
+    height: 480px;
+}
+
+.contact-image img {
+    opacity: .9;
+    background-size: cover;
+}
+
+.contact-body {
+    background-color: #404040;
+    height: 100%;
+    border-left: 2px solid #333333;
+}
+
+.form-content{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-content div { 
+    margin-bottom: 40px; 
+}
+
+.form-content div i {
+    margin-right: 20px; 
+}
+
+.contact-body form {
+    padding: 50px 40px;
+    box-sizing: border-box;
+}
+
+.contact-body h2 {
+    color: orange;
+}
+
+form .form-content {
+    position: relative;
+    margin: 30px 0;
+    border-bottom: 2px solid lightgray;
+}
+
+form .form-content input {
+    width: 100%;
+    height: 40px;
+    padding: 0 5px;
+    font-size: 17px;
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+}
+
+form .form-content label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: gray;
+    transform: translateY(-50%);
+    font-size: 17px;
+    transition: .5s;
+    pointer-events: none;
+}
+
+form .form-content span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: orange;
+    transform: .4s;
+}
+
+form .form-content input:focus~label,
+form .form-content input:valid~label {
+    top: -5px;
+    color: orange;
+}
+
+form .form-content input:focus~span::before,
+form .form-content input:valid~span::before {
+    width: 100%;
+}
+
+.contact-body form button {
+    padding: 10px 20px;
+    font-size: 17px;
+    border: none;
+    background-color: #ff6600;
+    color: white;
+    border: 5px;
+    cursor: pointer;
+    transition: all .4s ease-in;
+}
+
+.contact-body form button:hover {
+    background-color: #ff6681;
+}
+
+
+/* Footer */
+
+
+.footer {
+    background-color: #404040;
+    border-top: 2px solid #333333;
+}
+
+.footer .footer-box {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer .footer-box .social-media a {
+    color: white;
+    background-color: #333333;
+    border-radius: 50%;
+    font-size: 17px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.footer .footer-box .social-media a:hover {
+    opacity: .7;
+    transition: .5s all ease-in-out;
+}
+
+.footer .footer-box .copyright {
+    color: white;
+    font-size: 20px;
+}
+
+.footer .footer-box .brand {
+    color: white;
+    font-size: 20px;
+}
+
+.footer .footer-box .brand h2 {
+    color: orange;
+}
+
+/* Responsive */
+
+@media(max-width: 992px) {
+
+    /* Header */
+
+    header {
+        flex-direction: column;
+        height: 150px;
+        background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+    }
+
+    .menu-header .logo a {
+        font-size: 25px;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+        flex-direction: column;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content h2 {
+        font-size: 28px;
+    }
+
+    .content p {
+        font-size: 18px;
+    }
+}
+
+
+@media(max-width: 950px) {
+    .contact .contact-box {
+        flex: 100%;
+    }
+}
+
+@media(max-width: 800px) {
+
+    .menu .menu-content .hot-coffees,
+    .cold-coffees,
+    .frappucino-coffees {
+        margin: 20px;
+    }
+}
+
+@media(max-width: 700px) {
+    .footer .footer-box .social-media a {
+        color: white;
+        background-color: #333333;
+        border-radius: 50%;
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .footer .footer-box .copyright {
+        color: white;
+        font-size: 15px;
+    }
+
+    .footer .footer-box .brand {
+        color: white;
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 500px) {
+
+    /* header */
+
+    header {
+        height: 130px;
+    }
+
+    header .logo a {
+        font-size: 23px;
+    }
+
+    header nav ul li a {
+        font-size: 13px;
+        flex-direction: column;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    /* Content */
+
+    .content h2 {
+        font-size: 23px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+
+    /* footer */
+
+    .footer .footer-box {
+        flex-direction: column;
+    }
+
+    .footer .footer-box .social-media a {
+        color: white;
+        background-color: #333333;
+        border-radius: 50%;
+        font-size: 16px;
+        padding: 10px;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+    .footer .footer-box .copyright {
+        color: white;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .footer .footer-box .brand {
+        color: white;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+}
+
+
+
+@media(max-width: 410px) {
+
+    /* header */
+
+    header {
+        height: 120px;
+    }
+
+    header .logo a {
+        font-size: 20px;
+        color: white;
+        padding: 15px 30px;
+    }
+
+    header nav ul li a {
+        font-size: 12px;
+        flex-direction: column;
+        display: inline-block;
+        margin-top: 10px;
+        color: white;
+        padding: 5px 5px;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* content */
+
+    .content h2 {
+        font-size: 20px;
+    }
+
+    .content p {
+        font-size: 13px;
+    }
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+
+.fa-heart{
+	  color: darkgray ;
+	  font-size: 25px ;
+	  transform: scale 0.15s;
+	  cursor: pointer;
+  }
+  
+  .fa-heart:hover{
+	  scale: 1.1 ;
+  }
+  
+  .fa-heart:active{
+	  scale: 1.0;
+  }
+  
+  
+  /*Chatbot*/
+.container-chat-bot{
+    max-width: 400px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: fixed;
+    top: 1000px;
+    right: 20px;
+    transition: top 0.5s ease-in;
+    background-color: rgb(239, 239, 239);
+    border-radius: 5px;
+    padding: 0 20px 0 20px;
+    overflow-y: scroll;
+    max-height: 540px;
+    height: 552px;
+        overflow-x: hidden;
+
+  }
+  
+  .content-chat-bot{
+    display: flex;
+    background-color: rgb(249, 249, 249);
+    margin-top: 20px;
+    margin-right: 150px;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .content-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+  .content-img-you{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+  .content-you{
+    display: flex;
+    background-color: rgb(248, 248, 248);
+    margin-top: 20px;
+    text-align: left; 
+    justify-content: flex-end;
+  }
+  
+  .chatbot{
+    margin-left: 20px;
+    font-size: 14px;
+    color: lightcoral;
+  }
+  
+  .detail-chatbot{
+    font-size: 16px;
+    color: black;
+    margin-top: 10px;
+  }
+  
+  .you, .content-img-you{
+  float: right;
+  }
+  
+  .you{
+    margin-right: 15px;
+    font-size: 14px;
+    color: orange;
+  }
+  
+  .detail-you{
+    font-size: 16px;
+    color: black;
+    margin-top: 10px;
+  }
+  
+  /* Gửi tin nhắn cho chatbot*/
+  .container-send{
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 100%;
+  }
+  
+  .container-send-you-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+  .send-input{
+    margin: 5px 20px 0 15px;
+    padding: 10px 50px 10px 8px;
+    border-radius: 10px;
+  }
+  
+  .div-send{
+    margin: 13px 40px 0 0;
+    cursor: pointer;
+  }
+
+  .div-send i:active {
+    scale: 1.1;
+  }
+  
+  .send-a{
+    text-decoration: none;
+    
+  }
+  /* hình tròn tin nhắn*/
+  .circle button{
+    font-size: 80px ;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 50px;
+  }
+
+  .circle img:active {
+    scale: 1.1;
+  }
+  
+  .circle {
+    position: fixed;
+    bottom: 20px; /* Điều chỉnh khoảng cách từ bottom của màn hình */
+    right: 20px; /* Điều chỉnh khoảng cách từ right của màn hình */
+    z-index: 9999; /* Để chắc chắn rằng phần tử hiển thị trên tất cả các phần tử khác */
+  }
+  
+  .circle-img {
+    width: 50px; /* Điều chỉnh kích thước của hình ảnh */
+    height: 50px;
+    border-radius: 50%; /* Để tạo ra hình tròn */
+    cursor: pointer;
+  }
+  
+  .content-customer {
+	  width: 100%;
+  }
+  
+  .input-find-menu{
+	  padding: 10px 15px;
+	  border-radius: 10px;
+	  border: 1px solid black;
+	  width: 300px;
+  }
+  

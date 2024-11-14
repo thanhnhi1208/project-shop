@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="CSS_COFFEE/login.css">
+    <!-- Google Fonts Links For Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a class="logo" href="homeCoffee.html">Nông Sản Việt<span>.</span></a>
+      </nav>
+    </header>
+
+    <!--LOGIN  -->
+
+    <section class="hero-section">
+      <div class="content">
+        <h3>Đăng Nhập</h3>
+		
+		<p th:if="${param.error}" style="color: red;">Sai tài khoản hoặc mật khẩu</p>
+		
+		<form method="post" th:action="@{/do-login}">
+	        <div>
+	             <input class="Youremail" type="text" placeholder="Email" name="username">
+	        </div>
+	
+	        <div>
+	            <input class="Password" id="Password" type="password" placeholder="Password" name="password">
+	        </div>
+	
+	        <div>
+	            <input name="remember-me" type="checkbox" class="custom-control-input" id="customCheck">
+	            <label class="custom-control-label" for="customCheck">Remember Me</label>
+	        </div>
+	
+	        <div class="div-fotgot-password">
+	          <a class="fotgot-password" th:href="@{/forgot-password}">Quên Mật Khẩu</a>
+	        </div>
+	
+	        <div class="div-fotgot-password">
+	          <a class="fotgot-password" th:href="@{/change-pass}">Đổi Mật Khẩu </a>
+	        </div>
+	
+	        <div class="div-fotgot-password">
+	          <a class="fotgot-password" th:href="@{/signup}">Đăng Kí</a>
+	        </div>
+	        
+	        <button type="submit">Đăng Nhập</button>
+		</form>
+      </div>
+    </section>
+
+   <!-- <script>
+      const header = document.querySelector("header");
+      const hamburgerBtn = document.querySelector("#hamburger-btn");
+      const closeMenuBtn = document.querySelector("#close-menu-btn");
+
+      // Toggle mobile menu on hamburger button click
+      hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
+
+      // Close mobile menu on close button click
+      closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+    </script>-->
+    
+  </body>
+</html>

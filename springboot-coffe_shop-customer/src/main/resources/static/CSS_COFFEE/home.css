@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.navbar .logo-name {
+  color: #f3af39;
+  font-weight: 600;
+  font-size: 2.1rem;
+  text-decoration: none;
+}
+
+
+.navbar .menu-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.navbar a {
+  color: #f3af39;
+  text-decoration: none;
+  transition: 0.2s ease;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+  
+  .div-totalItem{
+	  position: relative;
+  }
+  
+  #totalItem {
+	  	position: absolute;
+	  	top: -10px;
+	  	right: -13px;
+	  	color: red;
+  }
+  
+  
+  
+  .navbar .menu-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    align-items: center;
+  }
+  
+  .navbar a {
+    color: #f3af39;
+    text-decoration: none;
+    transition: 0.2s ease;
+  }
+
+/* san phẩm */
+
+
+.HinhNen{
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.image-container{
+  display: flex;
+  align-items: center;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 70px; /* Khoảng cách giữa các cột */
+}
+
+.item {
+  flex: 1; /* Đảm bảo mỗi cột chiếm không gian bằng nhau */
+  text-align: center;
+  
+}
+
+.img {
+  max-width: 800px; /* Hình ảnh chiếm toàn bộ chiều rộng của item */
+  height: 300px; /* Giữ tỷ lệ khung hình cho ảnh */
+  max-width: 350px; /* Giới hạn kích thước lớn nhất của ảnh */
+  border-radius: 10px; /* Tạo góc bo tròn nếu muốn */
+  
+}
+
+.button {
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px; 
+}
+
+.add-to-cart{
+  background: none; /* Ẩn nền */
+    border: none; /* Ẩn viền */
+    padding: 0; /* Bỏ padding */
+    cursor: pointer;
+}
+
+.text{
+  margin-top: 20px;
+  padding: 40px ;
+  background-color: #f3af39;
+  text-align: center;
+  font-size: 80px ;
+  color: rgb(21, 95, 21);
+  font-family: 'Great Vibes', sans-serif; 
+}
+
+
+footer {
+  background-color: lightgray;
+  color: rgb(45, 45, 45);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+.footer-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.socials {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.socials li i{
+  margin:  10px;
+  font-size: 27px;
+}
+
+.socials li a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.socials li a:hover {
+  color: #f9b600;
+}
+
+.footer-bottom {
+  background-color: #939393;
+  padding: 10px 0;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+}
